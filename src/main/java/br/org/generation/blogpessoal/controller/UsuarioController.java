@@ -36,7 +36,7 @@ public class UsuarioController {
 
 }
 	@PostMapping("/cadastrar")
-	public ResponseEntity<Usuario> postUsuario(@RequestBody Usuario usuario) {
+	public ResponseEntity<Usuario> post(@RequestBody Usuario usuario) {
 
 		return usuarioService.cadastrarUsuario(usuario)
 			.map(respostaCadastro -> ResponseEntity.status(HttpStatus.CREATED).body(respostaCadastro))
