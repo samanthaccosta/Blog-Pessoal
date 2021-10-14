@@ -24,7 +24,7 @@ import br.org.generation.blogpessoal.repository.UsuarioRepository;
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-public class UsuarioControllerTests {
+public class UsuarioControllerTest {
     
 	@Autowired
 	private TestRestTemplate testRestTemplate;
@@ -65,11 +65,13 @@ public class UsuarioControllerTests {
 
 	}
 
-	//Este método requer autenticação (login)
+	/**
+	 * Este método requer autenticação (login)
+	 */
 	@Test
 	@Order(2)
     @DisplayName("👍 Listar todos os Usuários!")
-	public void deveMostrarTodosUsuarios() {
+	public void deveMostrarTodosUsuario() {
 		
 		ResponseEntity<String> resposta = testRestTemplate
 			.withBasicAuth("admin@email.com.br", "admin123")
@@ -80,3 +82,4 @@ public class UsuarioControllerTests {
 	}
 	
 }
+

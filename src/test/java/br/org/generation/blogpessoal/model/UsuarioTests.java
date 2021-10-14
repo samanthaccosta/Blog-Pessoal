@@ -1,10 +1,12 @@
 package br.org.generation.blogpessoal.model;
 
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.Set;
 
 import javax.validation.ConstraintViolation;
+import javax.validation.Validation;
 import javax.validation.Validator;
 import javax.validation.ValidatorFactory;
 
@@ -14,8 +16,6 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
-
-import com.mysql.cj.xdevapi.Schema.Validation;
 
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 	public class UsuarioTests {
@@ -32,7 +32,7 @@ import com.mysql.cj.xdevapi.Schema.Validation;
 		public void start() {
 	        
 			usuario = new Usuario(0L, "João da Silva", "joao@email.com.br", "13465278");
-
+			
 		}
 
 		@Test
@@ -53,7 +53,7 @@ import com.mysql.cj.xdevapi.Schema.Validation;
 			Set<ConstraintViolation<Usuario>> violacao = validator.validate(usuarioErro);
 			System.out.println(violacao.toString());
 
-			assertTrue(violacao.isEmpty());
+			assertFalse(violacao.isEmpty());
 		}
 
 	}
